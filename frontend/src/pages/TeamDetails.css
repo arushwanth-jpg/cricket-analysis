@@ -1,8 +1,18 @@
+
 .team-details-page {
+  box-sizing: border-box;
   min-height: 100vh;
   padding: 32px;
   color: #e5e7eb;
-  background: #0f172a;
+  background:
+    radial-gradient(circle at top right, rgba(37, 99, 235, 0.1), transparent 32%),
+    #080d18;
+}
+
+.team-details-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .team-back-link {
@@ -12,88 +22,93 @@
   margin-bottom: 24px;
   color: #94a3b8;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .team-back-link:hover {
   color: #38bdf8;
+  transform: translateX(-2px);
 }
 
 .team-profile-card {
-  max-width: 1000px;
-  margin: 0 auto;
   padding: 32px;
-  border: 1px solid #263449;
+  border: 1px solid #263852;
   border-radius: 20px;
-  background: linear-gradient(145deg, #172337, #111b2d);
+  background: linear-gradient(145deg, #111c32, #0e1729);
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
 }
 
 .team-profile-header {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 26px;
   padding-bottom: 30px;
-  border-bottom: 1px solid #2b394d;
+  border-bottom: 1px solid #263852;
 }
 
-.team-logo,
-.team-logo-placeholder {
-  width: 110px;
-  height: 110px;
-  flex-shrink: 0;
-  border: 1px solid #334155;
-  border-radius: 20px;
-}
-
-.team-logo {
-  object-fit: contain;
-  background: #fff;
-  padding: 10px;
-}
-
-.team-logo-placeholder {
+.team-details-logo,
+.team-details-logo-placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  border: 1px solid #334155;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.team-details-logo {
+  padding: 10px;
+  object-fit: contain;
+  background: #fff;
+}
+
+.team-details-logo-placeholder {
   color: #7dd3fc;
-  background: #1e293b;
-  font-size: 40px;
-  font-weight: 700;
+  background: linear-gradient(145deg, #24364f, #152238);
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.team-profile-heading {
+  min-width: 0;
 }
 
 .team-details-eyebrow {
-  margin: 0 0 8px;
+  margin: 0 0 9px;
   color: #38bdf8;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
 }
 
 .team-profile-header h1 {
   margin: 0 0 8px;
   color: #f8fafc;
-  font-size: 30px;
-  font-weight: 700;
+  font-size: clamp(25px, 4vw, 34px);
+  font-weight: 750;
+  overflow-wrap: anywhere;
 }
 
 .team-profile-header p {
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   color: #94a3b8;
   font-size: 14px;
 }
 
-.team-short-name {
-  display: inline-block;
-  padding: 5px 10px;
+.team-details-short-name {
+  display: inline-flex;
+  padding: 6px 11px;
   border: 1px solid rgba(56, 189, 248, 0.3);
   border-radius: 8px;
   color: #7dd3fc;
   background: rgba(14, 165, 233, 0.12);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .team-squad-heading {
@@ -101,13 +116,13 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin: 28px 0 20px;
+  margin: 30px 0 20px;
 }
 
 .team-squad-heading h2 {
   margin: 0 0 6px;
   color: #f1f5f9;
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 700;
 }
 
@@ -120,8 +135,8 @@
 .team-player-count {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 8px 12px;
+  gap: 8px;
+  padding: 9px 13px;
   border: 1px solid #334155;
   border-radius: 999px;
   color: #cbd5e1;
@@ -141,27 +156,31 @@
   display: flex;
   align-items: center;
   gap: 14px;
+  min-width: 0;
   padding: 16px;
-  border: 1px solid #2b394d;
-  border-radius: 12px;
-  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid #263852;
+  border-radius: 13px;
   color: inherit;
+  background: rgba(8, 15, 29, 0.6);
   text-decoration: none;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease,
+    background 0.2s ease;
 }
 
 .team-player-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(56, 189, 248, 0.5);
+  border-color: rgba(56, 189, 248, 0.55);
+  background: #14233a;
 }
 
 .team-player-avatar {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   flex-shrink: 0;
+  border: 1px solid #334155;
   border-radius: 50%;
   color: #7dd3fc;
   background: #1e293b;
@@ -171,13 +190,17 @@
 
 .team-player-info {
   min-width: 0;
+  flex: 1;
 }
 
 .team-player-info h3 {
   margin: 0 0 5px;
   color: #e2e8f0;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 650;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .team-player-info p {
@@ -196,16 +219,41 @@
   font-weight: 600;
 }
 
-.team-no-players,
-.team-details-message {
+.team-player-arrow {
+  color: #60a5fa;
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
+
+.team-player-card:hover .team-player-arrow {
+  transform: translateX(4px);
+}
+
+.team-no-players {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 42px 20px;
+  border: 1px dashed #334155;
+  border-radius: 14px;
   color: #94a3b8;
   text-align: center;
 }
 
-.team-no-players {
-  padding: 36px 16px;
-  border: 1px dashed #334155;
-  border-radius: 12px;
+.team-no-players svg {
+  color: #64748b;
+}
+
+.team-no-players h3 {
+  margin: 0;
+  color: #e2e8f0;
+  font-size: 17px;
+}
+
+.team-no-players p {
+  margin: 0;
+  font-size: 13px;
 }
 
 .team-details-message {
@@ -214,37 +262,120 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  background: #0f172a;
+  gap: 14px;
+  color: #94a3b8;
+  text-align: center;
 }
 
-.team-details-message .team-back-link {
+.team-details-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #334155;
+  border-top-color: #38bdf8;
+  border-radius: 50%;
+  animation: team-spin 0.8s linear infinite;
+}
+
+@keyframes team-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.team-details-state-card {
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 30px;
+  border: 1px solid #263852;
+  border-radius: 18px;
+  background: #111c32;
+}
+
+.team-state-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  color: #7dd3fc;
+  background: #1e293b;
+}
+
+.team-details-state-card h2 {
+  margin: 4px 0 0;
+  color: #f1f5f9;
+  font-size: 21px;
+}
+
+.team-details-state-card p {
   margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
-@media (max-width: 700px) {
+.team-retry-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 10px 16px;
+  border: 1px solid #2563eb;
+  border-radius: 9px;
+  color: #eff6ff;
+  background: #1d4ed8;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.team-retry-button:hover {
+  background: #2563eb;
+}
+
+.team-details-state-card .team-back-link {
+  margin: 8px 0 0;
+}
+
+@media (max-width: 760px) {
   .team-details-page {
-    padding: 20px 14px;
+    padding: 24px 18px;
   }
 
   .team-profile-card {
-    padding: 22px;
+    padding: 24px;
+  }
+
+  .team-squad-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .team-details-page {
+    padding: 20px 12px;
+  }
+
+  .team-profile-card {
+    padding: 18px;
   }
 
   .team-profile-header {
-    align-items: flex-start;
-    gap: 16px;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
   }
 
-  .team-logo,
-  .team-logo-placeholder {
-    width: 76px;
-    height: 76px;
-    border-radius: 14px;
+  .team-details-logo,
+  .team-details-logo-placeholder {
+    width: 100px;
+    height: 100px;
   }
 
   .team-profile-header h1 {
-    font-size: 23px;
+    font-size: 25px;
   }
 
   .team-squad-heading {
@@ -252,7 +383,23 @@
     flex-direction: column;
   }
 
-  .team-squad-grid {
-    grid-template-columns: 1fr;
+  .team-player-card {
+    padding: 13px;
+  }
+
+  .team-details-state-card {
+    padding: 24px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-details-spinner {
+    animation-duration: 1.8s;
+  }
+
+  .team-player-card,
+  .team-back-link,
+  .team-retry-button {
+    transition: none;
   }
 }

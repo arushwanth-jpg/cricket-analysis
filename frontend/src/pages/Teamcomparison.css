@@ -1,0 +1,622 @@
+
+.team-comparison-page {
+  min-height: 100vh;
+  padding: 32px;
+  color: #e5e7eb;
+  background: #0b1120;
+  box-sizing: border-box;
+}
+
+/* HEADER */
+
+.team-comparison-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.team-comparison-eyebrow {
+  margin: 0 0 9px;
+  color: #38bdf8;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.team-comparison-header h1 {
+  margin: 0 0 9px;
+  color: #f8fafc;
+  font-size: 32px;
+  font-weight: 750;
+}
+
+.team-comparison-subtitle {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.team-comparison-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 15px;
+  border: 1px solid #263852;
+  border-radius: 999px;
+  color: #cbd5e1;
+  background: #111c30;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.team-comparison-header-badge span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #38bdf8;
+}
+
+/* CARDS */
+
+.team-comparison-selection-card,
+.team-comparison-team-card,
+.team-comparison-stat-card,
+.team-comparison-chart-card,
+.team-comparison-recent-card {
+  min-width: 0;
+  border: 1px solid #263852;
+  border-radius: 17px;
+  background: linear-gradient(145deg, #121e33, #0e1829);
+  box-sizing: border-box;
+}
+
+.team-comparison-selection-card {
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.team-comparison-section-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.team-comparison-section-heading h2 {
+  margin: 0 0 7px;
+  color: #f8fafc;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.team-comparison-section-heading p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+/* SELECTION */
+
+.team-comparison-selection-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: end;
+  gap: 22px;
+}
+
+.team-comparison-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+}
+
+.team-comparison-input-group label {
+  color: #cbd5e1;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.team-comparison-input-group select {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 13px;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  outline: none;
+  color: #f8fafc;
+  background: #0b1220;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.team-comparison-input-group select:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+}
+
+.team-comparison-input-group select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.team-comparison-input-group option {
+  color: #f8fafc;
+  background: #111c30;
+}
+
+.team-comparison-vs,
+.team-comparison-center-vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #334155;
+  border-radius: 50%;
+  color: #38bdf8;
+  background: #0b1220;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.team-comparison-vs {
+  width: 44px;
+  height: 44px;
+}
+
+.team-comparison-actions {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 22px;
+}
+
+.team-comparison-format {
+  width: min(260px, 100%);
+}
+
+.team-comparison-submit {
+  min-height: 45px;
+  padding: 0 22px;
+  border: 1px solid #0284c7;
+  border-radius: 10px;
+  color: #f0f9ff;
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.team-comparison-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.team-comparison-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ERROR */
+
+.team-comparison-error {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 12px 14px;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 10px;
+  color: #fca5a5;
+  background: rgba(127, 29, 29, 0.15);
+  font-size: 13px;
+}
+
+.team-comparison-error button {
+  padding: 6px 10px;
+  border: 1px solid #7f1d1d;
+  border-radius: 7px;
+  color: #fecaca;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* RESULTS */
+
+.team-comparison-results {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.team-comparison-cards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 55px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+}
+
+.team-comparison-team-card {
+  padding: 25px;
+  text-align: center;
+}
+
+.team-comparison-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 15px;
+  overflow: hidden;
+  border: 2px solid #334155;
+  border-radius: 50%;
+  color: #7dd3fc;
+  background: #172b45;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.team-comparison-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.team-comparison-label {
+  color: #38bdf8;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.team-comparison-team-card h2 {
+  margin: 9px 0 5px;
+  color: #f8fafc;
+  font-size: 21px;
+}
+
+.team-comparison-team-card > p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.team-comparison-win-percentage {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 19px 0;
+}
+
+.team-comparison-win-percentage strong {
+  color: #38bdf8;
+  font-size: 30px;
+}
+
+.team-comparison-win-percentage span {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.team-comparison-card-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-top: 16px;
+  border-top: 1px solid #263852;
+}
+
+.team-comparison-card-stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.team-comparison-card-stats strong {
+  color: #f8fafc;
+  font-size: 19px;
+}
+
+.team-comparison-card-stats span {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.team-comparison-center-vs {
+  width: 48px;
+  height: 48px;
+}
+
+/* OVERVIEW */
+
+.team-comparison-overview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.team-comparison-overview article {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid #263852;
+  border-radius: 13px;
+  background: #111c30;
+}
+
+.team-comparison-overview article span {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.team-comparison-overview article strong {
+  color: #f8fafc;
+  font-size: 27px;
+}
+
+/* STATISTICS */
+
+.team-comparison-stat-card,
+.team-comparison-chart-card,
+.team-comparison-recent-card {
+  padding: 24px;
+}
+
+.team-comparison-tag {
+  padding: 6px 10px;
+  border: 1px solid #334155;
+  border-radius: 7px;
+  color: #7dd3fc;
+  background: #0b1220;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.team-comparison-team-names {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 12px;
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.team-comparison-metrics {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-comparison-metric-row {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  align-items: center;
+  gap: 12px;
+  min-height: 60px;
+  border-top: 1px solid rgba(51, 65, 85, 0.55);
+}
+
+.team-comparison-metric-row > strong {
+  color: #cbd5e1;
+  font-size: 15px;
+  text-align: center;
+}
+
+.team-comparison-metric-row > strong.team-metric-winner {
+  color: #38bdf8;
+}
+
+.team-comparison-metric-row > span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #94a3b8;
+  font-size: 12px;
+  text-align: center;
+}
+
+.team-comparison-metric-row small {
+  color: #64748b;
+  font-size: 9px;
+}
+
+/* CHART */
+
+.team-comparison-chart-card {
+  min-width: 0;
+}
+
+/* RECENT MATCHES */
+
+.team-comparison-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 130px;
+  color: #94a3b8;
+  font-size: 13px;
+  text-align: center;
+}
+
+.team-comparison-match-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-comparison-match {
+  padding: 17px 0;
+  border-top: 1px solid rgba(51, 65, 85, 0.55);
+}
+
+.team-comparison-match-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.team-comparison-match-main h3 {
+  margin: 0 0 6px;
+  color: #f8fafc;
+  font-size: 14px;
+}
+
+.team-comparison-match-main p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.team-comparison-match-format {
+  padding: 5px 9px;
+  border: 1px solid #334155;
+  border-radius: 7px;
+  color: #7dd3fc;
+  font-size: 10px;
+}
+
+.team-comparison-match-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 11px;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.team-comparison-match-result {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+  color: #cbd5e1;
+  font-size: 12px;
+}
+
+.team-result-badge {
+  padding: 5px 9px;
+  border-radius: 7px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.team-result-badge.team1-win {
+  color: #86efac;
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.team-result-badge.team2-win {
+  color: #c4b5fd;
+  background: rgba(139, 92, 246, 0.12);
+}
+
+.team-result-badge.draw {
+  color: #fcd34d;
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.team-result-badge.no-result {
+  color: #94a3b8;
+  background: rgba(148, 163, 184, 0.12);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .team-comparison-overview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .team-comparison-page {
+    padding: 22px 15px;
+  }
+
+  .team-comparison-header {
+    flex-direction: column;
+  }
+
+  .team-comparison-header h1 {
+    font-size: 27px;
+  }
+
+  .team-comparison-selection-card,
+  .team-comparison-stat-card,
+  .team-comparison-chart-card,
+  .team-comparison-recent-card {
+    padding: 18px 14px;
+  }
+
+  .team-comparison-selection-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .team-comparison-vs {
+    width: 38px;
+    height: 38px;
+    justify-self: center;
+  }
+
+  .team-comparison-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .team-comparison-format {
+    width: 100%;
+  }
+
+  .team-comparison-submit {
+    width: 100%;
+  }
+
+  .team-comparison-cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .team-comparison-center-vs {
+    justify-self: center;
+    width: 40px;
+    height: 40px;
+  }
+
+  .team-comparison-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .team-comparison-team-card {
+    padding: 20px 14px;
+  }
+
+  .team-comparison-section-heading h2 {
+    font-size: 17px;
+  }
+
+  .team-comparison-metric-row {
+    grid-template-columns: 0.8fr 1.4fr 0.8fr;
+    gap: 5px;
+  }
+
+  .team-comparison-metric-row > strong {
+    font-size: 13px;
+  }
+
+  .team-comparison-metric-row > span {
+    font-size: 11px;
+  }
+
+  .team-comparison-match-main h3 {
+    font-size: 13px;
+  }
+}

@@ -6,7 +6,7 @@ import {
   CircleDot,
   TrendingUp,
 } from "lucide-react";
-
+import PlayerComparison from "./pages/PlayerComparison";
 import Dashboard from "./pages/Dashboard";
 import Players from "./pages/Players";
 import Matches from "./pages/matches";
@@ -15,6 +15,7 @@ import PlayerDetails from "./pages/PlayerDetails";
 import MatchDetails from "./pages/MatchDetails";
 import TeamDetails from "./pages/TeamDetails";
 import Analytics from "./pages/Analytics";
+import TeamComparison from "./pages/TeamComparison";
 
 function App() {
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -61,11 +62,23 @@ function App() {
               <Users size={18} />
               Players
             </NavLink>
-
+            
             <NavLink to="/teams" className={navLinkClass}>
               <Trophy size={18} />
               Teams
             </NavLink>
+
+
+            <NavLink to="/player-comparison" className={navLinkClass}>
+              <CircleDot size={18} />
+              Player Comparison
+            </NavLink>
+
+            <NavLink to="/team-comparison" className={navLinkClass}>
+              <CircleDot size={18} />
+              Team Comparison
+            </NavLink>
+
 
             <NavLink to="/analytics" className={navLinkClass}>
               <TrendingUp size={18} />
@@ -94,6 +107,8 @@ function App() {
             <Route path="/teams/:id" element={<TeamDetails />} />
             <Route path="/teams" element={<Teams />} />
             <Route path="/analytics" element={<Analytics />} />
+            <Route path="/player-comparison" element={<PlayerComparison />} />
+            <Route path="/team-comparison" element={<TeamComparison />} />
           </Routes>
         </main>
       </div>

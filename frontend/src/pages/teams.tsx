@@ -1,5 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { RefreshCw } from "lucide-react";
 import api from "../services/api";
 import "./teams.css";
 
@@ -18,19 +20,34 @@ export default function Teams() {
   const [countryFilter, setCountryFilter] = useState("All Countries");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [failedLogos, setFailedLogos] = useState<number[]>([]);
+
+  const fetchTeams = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError("");
+
+      const response = await api.get("teams/");
+      const data = response.data;
+
+      const teamList = Array.isArray(data)
+        ? data
+        : Array.isArray(data?.results)
+          ? data.results
+          : [];
+
+      setTeams(teamList);
+      setFailedLogos([]);
+    } catch {
+      setError("Unable to load teams. Check that the backend is running.");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
-    api
-      .get("teams/")
-      .then((response) => {
-        const data = response.data;
-        setTeams(Array.isArray(data) ? data : data.results ?? []);
-      })
-      .catch(() => {
-        setError("Unable to load teams. Check that the backend is running.");
-      })
-      .finally(() => setLoading(false));
-  }, []);
+    fetchTeams();
+  }, [fetchTeams]);
 
   const countries = useMemo(
     () => [
@@ -66,6 +83,12 @@ export default function Teams() {
 
   const hasActiveFilters =
     search.trim() !== "" || countryFilter !== "All Countries";
+
+  const handleLogoError = (teamId: number) => {
+    setFailedLogos((previous) =>
+      previous.includes(teamId) ? previous : [...previous, teamId]
+    );
+  };
 
   return (
     <div className="teams-page">
@@ -123,7 +146,6 @@ export default function Teams() {
             className="teams-country-select"
             value={countryFilter}
             onChange={(event) => setCountryFilter(event.target.value)}
-            aria-label="Filter teams by country"
           >
             {countries.map((country) => (
               <option key={country} value={country}>
@@ -131,6 +153,7 @@ export default function Teams() {
               </option>
             ))}
           </select>
+
           <svg
             className="teams-select-chevron"
             viewBox="0 0 24 24"
@@ -156,19 +179,47 @@ export default function Teams() {
         </button>
       </div>
 
-      {loading && <div className="teams-message">Loading teams...</div>}
+      {loading && (
+        <div className="teams-message teams-loading">
+          <span className="teams-spinner" />
+          <span>Loading teams...</span>
+        </div>
+      )}
 
-      {error && <div className="teams-message teams-error">{error}</div>}
+      {!loading && error && (
+        <div className="teams-message teams-error">
+          <p>{error}</p>
+          <button
+            type="button"
+            className="teams-retry-button"
+            onClick={fetchTeams}
+          >
+            <RefreshCw size={16} />
+            Try Again
+          </button>
+        </div>
+      )}
 
       {!loading && !error && (
         <>
           <div className="teams-results">
-            Showing <strong>{filteredTeams.length}</strong> of {teams.length} teams
+            Showing <strong>{filteredTeams.length}</strong> of{" "}
+            {teams.length} teams
           </div>
 
           {filteredTeams.length === 0 ? (
             <div className="teams-empty">
-              No teams match your search or filters.
+              <h3>No Teams Found</h3>
+              <p>No teams match your search or filters.</p>
+              {hasActiveFilters && (
+                <button
+                  type="button"
+                  className="teams-retry-button"
+                  onClick={clearFilters}
+                >
+                  Clear Filters
+                </button>
+              )}
             </div>
           ) : (
             <div className="teams-grid">
@@ -180,15 +231,16 @@ export default function Teams() {
                   aria-label={`View ${team.name} team profile`}
                 >
                   <div className="team-card-top">
-                    {team.logo_url ? (
+                    {team.logo_url && !failedLogos.includes(team.id) ? (
                       <img
                         className="team-logo"
                         src={team.logo_url}
                         alt={`${team.name} logo`}
+                        onError={() => handleLogoError(team.id)}
                       />
                     ) : (
                       <div className="team-logo-placeholder">
-                        {(team.short_name || team.name)
+                        {(team.short_name || team.name || "TEAM")
                           .slice(0, 3)
                           .toUpperCase()}
                       </div>
@@ -199,7 +251,7 @@ export default function Teams() {
                     </span>
                   </div>
 
-                  <h2>{team.name}</h2>
+                  <h2>{team.name || "Unnamed Team"}</h2>
 
                   <p className="team-country">
                     {team.country || "Country not specified"}

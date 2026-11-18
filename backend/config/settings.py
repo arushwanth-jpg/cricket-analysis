@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     "matches",
     "analytics",
     "predictions",
+    "player_statistics",
+    "team_statistics",
     
     ]
 
